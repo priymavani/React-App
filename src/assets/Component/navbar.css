@@ -1,0 +1,16 @@
+.navbar{
+    width: 100vw;
+    height: 40px;
+    background-color: skyblue;
+    
+}
+
+.nav{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbox{
+    width: 80px;
+
+}

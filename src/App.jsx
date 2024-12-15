@@ -1,11 +1,11 @@
 // import React, { StrictMode } from 'react';
 
 import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
-import { Meal } from './assets/Component/Meal';
-import { Cocktail } from './assets/Component/Cocktail';
-import { Potter } from './assets/Component/Potter';
-import { IndianBank } from './assets/Component/IndianBank';
-import Navbar from './assets/Component/navbar';
+import  Meal  from './assets/Component/Meal.jsx';
+import  Cocktail  from './assets/Component/Cocktail.jsx';
+import { Potter } from './assets/Component/Potter.jsx';
+import { IndianBank } from './assets/Component/IndianBank.jsx';
+import Navbar from './assets/Component/navbar.jsx';
 
 export default function App(){
 
@@ -14,7 +14,7 @@ export default function App(){
     <Router>
 
         <Navbar/>
-        
+
         <Routes>
         <Route path="/meal" element={<Meal/>}/> 
         <Route path="/cocktail" element={<Cocktail/>} />
