@@ -1,8 +1,38 @@
-# React + Vite
+# React Project 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## fetching APIs
 
-Currently, two official plugins are available:
+### 1. Cocktail API
+#### 1.1 Cocktail API for Categories
+#### 1.2 Cocktail API for Ingredients
+#### 1.3 Cocktail API for Alcoholic
+#### 1.4 Cocktail API for Non-Alcoholic
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<hr>
+
+### 2. Meal API
+#### 2.1 Meal API for Categories
+#### 2.2 Meal API for Ingredients
+#### 2.3 Meal API for Area
+#### 2.4 Meal API for Random Meal
+#### 2.5 Meal API for Meal by Name
+#### 2.6 Meal API for Meal by ID
+
+<hr>
+
+### 3. Potter API
+#### 3.1 Potter API for Characters
+#### 3.2 Potter API for Spells  
+#### 3.3 Potter API for Houses
+#### 3.4 Potter API for Books
+
+<hr>
+
+
+### 4. Indian Bank API
+#### 4.1 Indian Bank API for Ifsc code
+#### 4.2 Indian Bank API for Branch
+#### 4.3 Indian Bank API for Bank
+
+
+

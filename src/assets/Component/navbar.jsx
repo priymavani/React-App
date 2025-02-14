@@ -8,13 +8,18 @@ export default function Navbar(){
 
         <>
             <div className="navbar">
-                <ul className='nav'>
-                    <li className='navbox'  ><Link to='/meal'> Meal</Link></li>
-                    <li className='navbox' ><Link to='/cocktail'>Cocktail</Link></li>
-                    <li className='navbox' ><Link to='/potter'>Potter</Link></li>
-                    <li className='navbox' ><Link to='/bank'>Bank</Link></li>
+                <ul  className='nav'>
+                <li className='navbox' ><Link className='link' to='/'>Home</Link></li>
+                    <li className='navbox' ><Link className='link' to='/potter'>Harry Potter</Link></li>
+                    <li className='navbox' ><Link className='link' to='/drinks'>Drinks</Link></li>
+                    <li className='navbox'  ><Link className='link' to='/meal'> Meals</Link></li>
+                    <li className='navbox' ><Link className='link' to='/bank'>Bank</Link></li>
+                    {/* <li className='navbox' ><Link className='link' to='/codinggita'>codinggita</Link></li> */}
+             
                 </ul>
             </div>
+
+           
         </>
     )
 }

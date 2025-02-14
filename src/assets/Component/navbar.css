@@ -1,16 +1,36 @@
 .navbar{
-    width: 100vw;
-    height: 40px;
-    background-color: skyblue;
+    margin-left: 10%;
+    justify-content: center;
+    width: 80vw;
+    height: 70px;
+    background-color: rgb(166, 92, 240);
+    border-bottom: 5px solid rgb(119, 43, 194);
+    border-radius: 20px;
+    box-shadow: 4px 10px 10px rgb(166, 92, 240);
     
 }
 
 .nav{
+    
+    list-style-type: none;
     display: flex;
     justify-content: space-evenly;
 }
-
+.link{
+    text-decoration: none;
+    font-size: 24px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+    color: black;
+}
 .navbox{
-    width: 80px;
+
+    margin-top: 5px;
+    padding: 10px;
+    /* width: 80px; */
+    height: 40px;
+    background-color: #E7E4DE;
+    border-radius: 20px;
+    
 
 }

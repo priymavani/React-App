@@ -1,6 +1,7 @@
 import React , {useState,useEffect} from "react" ;
 import './Meal.css'
 
+
 export default function Meal (){
 
        const [meal , setMeal]=useState([]);
@@ -9,6 +10,8 @@ export default function Meal (){
        const [areas, setAreas] = useState([]);
        const [ingredients, setIngredients] = useState([]);
        const [filter, setFilter] = useState({ type: "", value: "" });
+          const [selectedMeal, setSelectedMeal] = useState(null); // For popup details
+
    
        useEffect(()=>{
            fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
@@ -83,23 +86,31 @@ export default function Meal (){
 
 
 
+          const handleViewRecipe = (idMeal) => {
+            fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`)
+              .then((response) => response.json())
+              .then((data) => setSelectedMeal(data.meals[0] || null))
+              .catch((error) => console.error("Error fetching recipe details:", error));
+          };
+
+
         
    
        return(
            <>
         
-            <div className="Meal"><h1>See How to Prepare Meal </h1>
+            <div className="Meal"><h1 className="headmeal">Explore Meals </h1>
 
-            <h2>Search items</h2>
+            {/* <h2>Search items</h2> */}
             <div className="searchitem">
-                <input className="seacrchinput" type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search for meal.." />
+                <input className="searchinput" type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search for meal.." />
                 <button onClick={handleSearch} className="searchbtn">Search</button>
             </div>
 
 
             {/* filter  */} 
             <div className="filter">
-                <h3>Filter Meals</h3>
+                <h3 className="headfilter">Filter Meals</h3>
                 <select className="select"  onChange = {(e) => handleFilterChange("category" , e.target.value)} >
                     <option  value=""> Select Category</option>
 
@@ -138,8 +149,9 @@ export default function Meal (){
                    <div key={i.idMeal}  className="mealcard">
                        <div className="mealname">{i.strMeal}</div>
                        <div className="mealimg"><img src={i.strMealThumb} alt={i.strMeal} className="mealimgthumb"  /></div>
-                       <div className="mealarea">Area : {i.strArea}</div>
+                     { i.strArea ? ( <div className="mealarea"> Area : {i.strArea}</div>) :(<div/>)}
                        <div className="ytlink"><a href={i.strYoutube} target="_blank" >Refer video</a></div>
+                       <button className="recipe" onClick={()=> handleViewRecipe(i.idMeal)}>View Recipe</button>
                     
 
                    </div>
@@ -147,6 +159,40 @@ export default function Meal (){
            }
               </div>
               </div>
+
+                  {/* Popup for Recipe Details */}
+                  {selectedMeal && (
+                    <div className="popup">
+                      <div className="popup-content">
+                        <h2>{selectedMeal.strMeal}</h2>
+                        <img
+                          src={selectedMeal.strMealThumb}
+                          alt={selectedMeal.strMeal}
+                          className="popup-img"
+                        />
+                        <p>
+                          <strong>Category:</strong> {selectedMeal.strCategory}
+                        </p>
+                        <p>
+                          <strong>Area:</strong> {selectedMeal.strArea}
+                        </p>
+                        <p>
+                          <strong>Instructions:</strong> {selectedMeal.strInstructions}
+                        </p>
+                        <a
+                          href={selectedMeal.strYoutube}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="popup-link"
+                        >
+                          Watch Video
+                        </a>
+                        <button className="popup-close" onClick={() => setSelectedMeal(null)}>
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  )}
 
 
 
@@ -157,4 +203,5 @@ export default function Meal (){
    
 
 }
+
 

@@ -1,59 +1,9 @@
-import React , {useState,useEffect} from "react" ;
-import './Potter.css'
-import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import "./Potter.css";
 
-
-
-// function Characters(){
-//     return(
-//         <>
-//         <div>characters</div>
-//         </>
-//     )
-
-// }
-
-
-
-// export function Potter(){
-
-//     return(
-//         <>
-//         <div className="Potter">
-//             <div className="navpotter">
-//                 <button >characters</button>
-//                 <button>Books</button>
-//                 <button>Spells</button>
-//                 <button>houses</button>
-//             </div>
-
-
-//         </div>
-//         <Router>
-//             <Routes>
-//                 <Route path="/potter/character" element={<Characters/>} ></Route>
-//             </Routes>
-//         </Router>
-//         </>
-
-        
-
-
-//     )
-
-
-
-// }
-
-
-
-
-
-
-export const Potter = () => {
+export function Potter() {
   const [data, setData] = useState([]); // To store fetched data
-  const [endpoint, setEndpoint] = useState(""); // Endpoint based on button click
+  const [endpoint, setEndpoint] = useState("books"); // Endpoint based on button click
 
   const BASE_URL = "https://potterapi-fedeperin.vercel.app/en"; // API Base URL
 
@@ -63,78 +13,114 @@ export const Potter = () => {
 
     fetch(`${BASE_URL}/${endpoint}`)
       .then((response) => response.json())
-      .then((result) => setData(result));
+      .then((result) => setData(result || []));
   }, [endpoint]);
 
   return (
-    <div>
-      <div>
-        {/* Title */}
-        <h1>Harry Potter API Explorer</h1>
+    <div className="potter-container">
+      <h1 className="potter-header">Harry Potter API Explorer</h1>
 
-        {/* Category Buttons */}
-        <div>
-          <button onClick={() => setEndpoint("books")}>Books</button>
-          <button onClick={() => setEndpoint("characters")}>Characters</button>
-          <button onClick={() => setEndpoint("houses")}>Houses</button>
-          <button onClick={() => setEndpoint("spells")}>Spells</button>
-        </div>
+      <div className="potter-buttons">
+        <button
+          className="potter-button"
+          onClick={() => setEndpoint("books")}
+        >
+          Books
+        </button>
+        <button
+          className="potter-button"
+          onClick={() => setEndpoint("characters")}
+        >
+          Characters
+        </button>
+        <button
+          className="potter-button"
+          onClick={() => setEndpoint("houses")}
+        >
+          Houses
+        </button>
+        <button
+          className="potter-button"
+          onClick={() => setEndpoint("spells")}
+        >
+          Spells
+        </button>
+      </div>
 
-        {/* Display Data */}
-        <div>
-          <h2>{endpoint && endpoint.charAt(0).toUpperCase() + endpoint.slice(1)}</h2>
+      <div className="potter-data">
+        {data.map((item, index) => (
+          <div className="potter-card" key={index}>
+            {item.image && (
+              <img
+                src={item.image}
+                alt={item.name || "Unnamed"}
+                className="potter-card-img"
+              />
+            )}
 
-          <div>
-            {data.map((data) => (
-              <div key={data._id || data.id || Math.random()}>
-                {/* Dynamic Content */}
-                {data.image && <img src={data.image} alt={data.name || "Unnamed"} />}
-
-                {/* Display book details */}
-                {endpoint === "books" && (
-                  <>
-                    {data.title && <h3>Title: {data.title}</h3>}
-                    {data.originalTitle && <p>Original Title: {data.originalTitle}</p>}
-                    {data.releaseDate && <p>Release Date: {data.releaseDate}</p>}
-                    {data.description && <p>Description: {data.description}</p>}
-                    {data.pages && <p>Pages: {data.pages}</p>}
-                    {data.cover && <img src={data.cover} alt={data.title || "Book Cover"} />}
-                  </>
+            {/* Display book details */}
+            {endpoint === "books" && (
+              <>
+                {item.title && <h3 className="potter-card-title">Title: {item.title}</h3>}
+                {item.originalTitle && (
+                  <p className="potter-card-text"> <span className="title">Original Title:</span> {item.originalTitle}</p>
                 )}
-
-                {/* Display character details */}
-                {endpoint === "characters" && (
-                  <>
-                    {data.nickname && <h3>Name: {data.nickname}</h3>}
-                    {data.hogwartsHouse && <p>Hogwarts House: {data.hogwartsHouse}</p>}
-                    {data.birthdate && <p>Birthdate: {data.birthdate}</p>}
-                    {data.interpretedBy && <p>Interpreted By: {data.interpretedBy}</p>}
-                  </>
+                {item.releaseDate && (
+                  <p className="potter-card-text"><span className="title">Release Date:</span> {item.releaseDate}</p>
                 )}
-
-                {/* Display house details */}
-                {endpoint === "houses" && (
-                  <>
-                    {data.house && <h3>House: {data.house}</h3>}
-                    {data.emoji && <p>Symbol: {data.emoji}</p>}
-                    {data.founder && <p>Founder: {data.founder}</p>}
-                    {data.animal && <p>Animal: {data.animal}</p>}
-                    {data.colors && <p>Colors: {data.colors.join(", ")}</p>}
-                  </>
+                {item.description && (
+                  <p className="potter-card-text"><span className="title">Description:</span> {item.description}</p>
                 )}
-
-                {/* Display spell details */}
-                {endpoint === "spells" && (
-                  <>
-                    {data.spell && <h3>Spell: {data.spell}</h3>}
-                    {data.use && <p>Usage: {data.use}</p>}
-                  </>
+                {item.pages && <p className="potter-card-text">  Pages: {item.pages}</p>}
+                {item.cover && (
+                  <img
+                    src={item.cover}
+                    alt={item.title || "Book Cover"}
+                    className="potter-card-img"
+                  />
                 )}
-              </div>
-            ))}
+              </>
+            )}
+
+            {/* Display character details */}
+            {endpoint === "characters" && (
+              <>
+                {item.nickname && <h3 className="potter-card-title"> <span className="title">Name:  </span>{item.nickname}</h3>}
+                {item.hogwartsHouse && (
+                  <p className="potter-card-text"> <span className="title">Hogwarts House: </span>{item.hogwartsHouse}</p>
+                )}
+                {item.birthdate && (
+                  <p className="potter-card-text"> <span className="title">Birthdate: </span>{item.birthdate}</p>
+                )}
+                {item.interpretedBy && (
+                  <p className="potter-card-text"> <span className="title">Interpreted By: </span>{item.interpretedBy}</p>
+                )}
+              </>
+            )}
+
+            {/* Display house details */}
+            {endpoint === "houses" && (
+              <>
+                {item.house && <h3 className="potter-card-title"> <span className="title">House:</span> {item.house}</h3>}
+                {item.emoji && <p className="potter-card-text"><span className="title">Symbol:</span> {item.emoji}</p>}
+                {item.founder && <p className="potter-card-text"><span className="title">Founder:</span> {item.founder}</p>}
+                {item.animal && <p className="potter-card-text"><span className="title">Animal: </span>{item.animal}</p>}
+                {item.colors && (
+                  <p className="potter-card-text"><span className="title">Colors:</span> {item.colors.join(", ")}</p>
+                )}
+              </>
+            )}
+
+            {/* Display spell details */}
+            {endpoint === "spells" && (
+              <>
+                {item.spell && <h3 className="potter-card-title"><span className="title">Spell:</span> {item.spell}</h3>}
+                {item.use && <p className="potter-card-text"><span className="title">Usage:</span> {item.use}</p>}
+              </>
+            )}
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );
-};
+}

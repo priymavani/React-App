@@ -1,6 +1,7 @@
 
 
 .cocktail{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -48,3 +49,101 @@
     height: 23vh;
     border-radius: 10px;
 }
+
+.ingredient , .drinkcategory , .drinkalcoholic{
+    margin-left: 8%;
+}
+.ingredient{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.ing{
+    color: rgb(240, 103, 24);
+}
+
+.recipe-button {
+    display: inline-block;
+    padding: 12px 25px; 
+    background-color: #126d12;
+    color: #ffffff; 
+    text-transform: uppercase; 
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px; 
+    border: 2px solid transparent; 
+    transition: all 0.4s ease-in-out;
+  }
+  
+  .recipe-button:hover {
+    background-color: #ffffff; 
+    color: #126d12; 
+    border: 2px solid #126d12; 
+    transform: scale(1.1);   }
+
+
+    .recipe-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+      }
+      
+      .recipe-content {
+        background: white;
+        padding: 20px;
+        max-width: 600px;
+        width: 100%;
+        border-radius: 10px;
+        text-align: left;
+        position: relative;
+      }
+      
+      .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: transparent;
+        color: #126d12;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+      
+      .close-button:hover {
+        color: #0c4d0c;
+      }
+      
+      h3 {
+        margin-top: 20px;
+      }
+      
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      
+      li {
+        font-size: 1rem;
+        color: #555;
+      }
+      
+      @media screen and (max-width: 768px) {
+        .cocktail-title {
+          font-size: 2.5rem;
+        }
+      
+        .cocktail-card {
+          padding: 15px;
+        }
+      
+        .cocktail-name {
+          font-size: 1.6rem;
+        }
+      }
