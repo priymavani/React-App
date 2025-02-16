@@ -1,5 +1,4 @@
 
-export function Potter() {
 import React , {useState,useEffect} from "react" ;
 import './potter.css'
 import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
