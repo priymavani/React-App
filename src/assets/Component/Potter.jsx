@@ -1,7 +1,4 @@
 
-import React, { useState, useEffect } from "react";
-import "./Potter.css";
-
 export function Potter() {
 import React , {useState,useEffect} from "react" ;
 import './potter.css'
