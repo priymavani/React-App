@@ -1,9 +1,8 @@
-<<<<<<< HEAD
+
 import React, { useState, useEffect } from "react";
 import "./Potter.css";
 
 export function Potter() {
-=======
 import React , {useState,useEffect} from "react" ;
 import './potter.css'
 import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
@@ -11,7 +10,7 @@ import {Link} from 'react-router-dom';
 
 
 export const Potter = () => {
->>>>>>> d403e8a27f6e15da54d8e334d45ed545fef85274
+
   const [data, setData] = useState([]); // To store fetched data
   const [endpoint, setEndpoint] = useState("books"); // Endpoint based on button click
 
